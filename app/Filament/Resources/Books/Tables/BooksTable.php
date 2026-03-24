@@ -39,6 +39,7 @@ class BooksTable
                     ->label('Available')
                     ->sortable(),
             ])
+            ->poll('10s')
             ->defaultSort('title', 'asc')
             ->modifyQueryUsing(fn (Builder $query) => $query->withoutGlobalScopes([
                 SoftDeletingScope::class,

@@ -35,6 +35,7 @@ class LoansTable
                     ->date('d/m/Y')
                     ->sortable(),
             ])
+            ->poll('10s')
             ->defaultSort('created_at', 'desc')
             ->modifyQueryUsing(fn (Builder $query) => $query->withoutGlobalScopes([
                 SoftDeletingScope::class,

@@ -20,4 +20,9 @@ class CreateLoan extends CreateRecord
 
         return $loan;
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
