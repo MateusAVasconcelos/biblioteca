@@ -23,13 +23,13 @@ class ListLoans extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All'),
             'reserved' => Tab::make('Reserved')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('status', LoanStatus::Reserved->value)),
             'sold' => Tab::make('Sold')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('status', LoanStatus::Sold->value)),
             'devolved' => Tab::make('Devolved')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('status', LoanStatus::Devolved->value)),
+            'all' => Tab::make('All'),
         ];
     }
 }

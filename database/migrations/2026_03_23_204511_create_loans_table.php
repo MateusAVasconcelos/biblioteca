@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('client_id')->constrained()->cascadeOnDelete();
             $table->foreignId('book_id')->constrained()->cascadeOnDelete();
             $table->string('status');
+            $table->date('due_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

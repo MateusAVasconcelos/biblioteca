@@ -24,6 +24,7 @@ class LoanFactory extends Factory
             'client_id' => Client::factory(),
             'book_id' => Book::factory(),
             'status' => LoanStatus::Reserved,
+            'due_date' => $this->faker->dateTimeBetween('-7 days', '+30 days'),
         ];
     }
 }

@@ -6,7 +6,6 @@ use App\Enums\LoanStatus;
 use App\Http\Controllers\LoanController;
 use App\Models\Loan;
 use Filament\Actions\Action;
-use Filament\Actions\EditAction;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -32,6 +31,10 @@ class LoansTable
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Date')
+                    ->date('d/m/Y')
+                    ->sortable(),
+                TextColumn::make('due_date')
+                    ->label('Due Date')
                     ->date('d/m/Y')
                     ->sortable(),
             ])

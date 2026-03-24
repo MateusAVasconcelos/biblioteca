@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[Fillable(['client_id', 'book_id', 'status'])]
+#[Fillable(['client_id', 'book_id', 'status', 'due_date'])]
 class Loan extends Model
 {
     /** @use HasFactory<LoanFactory> */
@@ -25,6 +25,7 @@ class Loan extends Model
     {
         return [
             'status' => LoanStatus::class,
+            'due_date' => 'date',
         ];
     }
 

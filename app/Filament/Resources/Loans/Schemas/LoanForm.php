@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Loans\Schemas;
 
 use App\Enums\LoanStatus;
 use App\Models\Book;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
 
@@ -35,7 +36,16 @@ class LoanForm
                         ->reject(fn (LoanStatus $status) => $status === LoanStatus::Devolved)
                         ->mapWithKeys(fn (LoanStatus $status) => [$status->value => $status->getLabel()])
                     )
+                    ->live()
                     ->required(),
+
+                DatePicker::make('due_date')
+                    ->label('Due Date')
+                    ->native(false)
+                    ->displayFormat('d/m/Y')
+                    ->minDate(today())
+                    ->visible(fn (callable $get) => $get('status') === LoanStatus::Reserved->value)
+                    ->required(fn (callable $get) => $get('status') === LoanStatus::Reserved->value),
             ]);
     }
 }
