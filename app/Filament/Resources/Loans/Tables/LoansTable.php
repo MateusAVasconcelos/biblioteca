@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\Loans\Tables;
 
 use App\Enums\LoanStatus;
+use App\Filament\Resources\Clients\ClientResource;
+use App\Filament\Resources\Loans\LoanResource;
 use App\Http\Controllers\LoanController;
 use App\Models\Loan;
 use Filament\Actions\Action;
@@ -19,6 +21,7 @@ class LoansTable
         return $table
             ->columns([
                 TextColumn::make('client.name')
+                    ->url(fn (Loan $record): string => ClientResource::getUrl('edit', ['record' => $record]))
                     ->label('Client')
                     ->searchable()
                     ->sortable(),
