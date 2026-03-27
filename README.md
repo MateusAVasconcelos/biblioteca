@@ -54,6 +54,18 @@ Após rodar as seeds, o painel admin estará disponível em `/admin`:
 composer test
 ```
 
+## Git Hooks
+
+O projeto usa um hook de `pre-push` que roda todos os testes automaticamente antes de cada `git push`, bloqueando o envio caso algum teste falhe.
+
+Após clonar o repositório, configure o git para usar os hooks do projeto:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+> Sem esse comando, o hook não será executado.
+
 ## Variáveis de ambiente
 
 Copie o `.env.example` e ajuste conforme necessário:
