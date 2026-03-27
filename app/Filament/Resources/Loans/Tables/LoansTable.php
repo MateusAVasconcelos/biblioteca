@@ -4,7 +4,6 @@ namespace App\Filament\Resources\Loans\Tables;
 
 use App\Enums\LoanStatus;
 use App\Filament\Resources\Clients\ClientResource;
-use App\Filament\Resources\Loans\LoanResource;
 use App\Http\Controllers\LoanController;
 use App\Models\Loan;
 use Filament\Actions\Action;
@@ -24,11 +23,15 @@ class LoansTable
                     ->url(fn (Loan $record): string => ClientResource::getUrl('edit', ['record' => $record]))
                     ->label('Client')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(30)
+                    ->tooltip(fn (TextColumn $column): ?string => strlen((string) $column->getState()) > 25 ? $column->getState() : null),
                 TextColumn::make('book.title')
                     ->label('Book')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(30)
+                    ->tooltip(fn (TextColumn $column): ?string => strlen((string) $column->getState()) > 35 ? $column->getState() : null),
                 TextColumn::make('status')
                     ->badge()
                     ->sortable(),

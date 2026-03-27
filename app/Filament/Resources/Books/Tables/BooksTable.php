@@ -24,10 +24,14 @@ class BooksTable
             ->columns([
                 TextColumn::make('title')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(20)
+                    ->tooltip(fn (TextColumn $column): ?string => strlen((string) $column->getState()) > 40 ? $column->getState() : null),
                 TextColumn::make('author')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(20)
+                    ->tooltip(fn (TextColumn $column): ?string => strlen((string) $column->getState()) > 30 ? $column->getState() : null),
                 TextColumn::make('genre')
                     ->sortable(),
                 TextColumn::make('copies')

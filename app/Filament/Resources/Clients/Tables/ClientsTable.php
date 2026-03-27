@@ -24,10 +24,14 @@ class ClientsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(20)
+                    ->tooltip(fn (TextColumn $column): ?string => strlen((string) $column->getState()) > 30 ? $column->getState() : null),
                 TextColumn::make('email')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(20)
+                    ->tooltip(fn (TextColumn $column): ?string => strlen((string) $column->getState()) > 35 ? $column->getState() : null),
                 TextColumn::make('phone')
                     ->searchable(),
                 TextColumn::make('city')
