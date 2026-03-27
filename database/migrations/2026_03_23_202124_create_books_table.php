@@ -22,6 +22,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->unsignedInteger('copies')->default(1);
             $table->unsignedInteger('available_copies')->default(1);
+            $table->decimal('loan_price', 8, 2)->nullable();
+            $table->decimal('sale_price', 8, 2)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

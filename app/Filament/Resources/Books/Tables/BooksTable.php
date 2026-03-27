@@ -28,15 +28,20 @@ class BooksTable
                 TextColumn::make('author')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('isbn')
-                    ->label('ISBN')
-                    ->searchable(),
                 TextColumn::make('genre')
                     ->sortable(),
                 TextColumn::make('copies')
                     ->sortable(),
                 TextColumn::make('available_copies')
                     ->label('Available')
+                    ->sortable(),
+                TextColumn::make('loan_price')
+                    ->label('Loan Price')
+                    ->money('BRL')
+                    ->sortable(),
+                TextColumn::make('sale_price')
+                    ->label('Sale Price')
+                    ->money('BRL')
                     ->sortable(),
             ])
             ->poll('10s')

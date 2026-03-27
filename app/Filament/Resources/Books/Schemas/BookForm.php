@@ -56,6 +56,22 @@ class BookForm
                             ->minValue(0)
                             ->default(1),
                     ]),
+
+                Section::make('Pricing')
+                    ->columns(2)
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('loan_price')
+                            ->label('Loan Price')
+                            ->numeric()
+                            ->prefix('R$')
+                            ->minValue(0),
+                        TextInput::make('sale_price')
+                            ->label('Sale Price')
+                            ->numeric()
+                            ->prefix('R$')
+                            ->minValue(0),
+                    ]),
             ]);
     }
 }

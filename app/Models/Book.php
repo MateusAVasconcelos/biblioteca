@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[Fillable(['title', 'author', 'isbn', 'publisher', 'genre', 'published_at', 'description', 'copies', 'available_copies'])]
+#[Fillable(['title', 'author', 'isbn', 'publisher', 'genre', 'published_at', 'description', 'copies', 'available_copies', 'loan_price', 'sale_price'])]
 class Book extends Model
 {
     /** @use HasFactory<BookFactory> */
@@ -26,6 +26,8 @@ class Book extends Model
         return [
             'published_at' => 'date',
             'genre' => BookGenre::class,
+            'loan_price' => 'decimal:2',
+            'sale_price' => 'decimal:2',
         ];
     }
 

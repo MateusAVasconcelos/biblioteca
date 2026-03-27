@@ -30,6 +30,8 @@ class BookFactory extends Factory
             'description' => $this->faker->paragraph(),
             'copies' => $copies,
             'available_copies' => $copies,
+            'loan_price' => $this->faker->randomFloat(2, 1, 50),
+            'sale_price' => $this->faker->randomFloat(2, 10, 200),
         ];
     }
 }
